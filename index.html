@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christmas Tree Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="christmas-tree" class="christmas-tree">
+    <div class="tree">
+      <div class="tree-details">
+        <div class="tree-letter letter-A" onclick="showMessage('A')">A</div>
+        <div class="tree-letter letter-R" onclick="showMessage('R')">R</div>
+        <div class="tree-letter letter-P" onclick="showMessage('P')">P</div>
+        <div class="tree-letter letter-I" onclick="showMessage('I')">I</div>
+        <div class="tree-letter letter-T" onclick="showMessage('T')">T</div>
+        <div class="tree-letter letter-A2" onclick="showMessage('A2')">A🤍</div>
+        <div class="tree-emoji" onclick="showMessage('🦸')">🦸</div>
+        <div class="heart-emoji" onclick="showMessage('💜')">💜</div>
+      </div>
+    </div>
+
+    <div class="tree">
+      <div class="tree-details"></div>
+    </div>
+    <div class="lights">
+      <div class="row-one"></div>
+      <div class="row-two"></div>
+    </div>
+    <div class="balls"></div>
+    <div class="star" id="star"></div>
+    <div class="shadow"></div>
+  </div>
+
+
+  <div class="floating-message" id="floatingMessage">Hello Arpita!</div>
+
+  <div id="snowfall"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var floatingMessage = document.getElementById("floatingMessage");
+
+      function showMessage(letter, customMessage) {
+        floatingMessage.innerHTML = customMessage;
+
+        floatingMessage.style.top = "500px";
+        floatingMessage.style.left = "52%";
+        floatingMessage.style.transform = "translateX(-50%)"; 
+        floatingMessage.style.display = "block";
+
+        setTimeout(function() {
+          floatingMessage.style.display = "none";
+        }, 15000);
+      }
+
+      var letterElements = document.querySelectorAll('.tree-letter');
+      letterElements.forEach(function(letterElement) {
+        letterElement.addEventListener("click", function() {
+          switch (letterElement.innerText) {
+            case 'A':
+              showMessage('A', `As I say, I don't want a lot for Christmas\n
+                                There is just one thing I need\n
+                                Don't care about the presents underneath the Christmas tree\n
+                                I don't need to hang my stocking there upon the fireplace
+                                All I need for Christmas is you by my side always`);
+              break;
+            case 'R':
+              showMessage('R', `Radiating with the festive glow, your laughter is my favorite rhythm, your smile as sweet as sugar cookies, fills my world with delight. This Christmas, you're the Rudolph guiding my heart's sleigh. Merry Christmas, my Bacchata!`);
+              break;
+            case 'P':
+              showMessage('P', `Pretty weird that just the last year who was just somebody I knew turned out to be the most important asset of my life. Who'd have imagined that you would mean so much to me that my heartbeat gets adapted and synchronizes with your existence when we first met. You have nudged your way into my anxious and guarded heart in the smoothest of fashions and became a part of it.`);
+              break;
+            case 'I':
+              showMessage('I', `If it’s true that an old man with a white beard and hair only gifts the socks of the good boys and girls, I must’ve been angel this year, because I had your love and care all year long which is definitely all I could ask for. You were there when I needed you and you were there when I was at my best. Santa must be real 🎅`);
+              break;
+            case 'T':
+              showMessage('T', 'The best gift which I could ever receive in any Christmas is you. And obviously, the peace and love your presence brings to my heart. You have really been the perfect piece of puzzle that I needed in my life and you fit in perfectly. All the christmas of my life I would be asking you till I will be breathing. You are and will be the best gift I have.');
+              break;
+              case 'A🤍':
+            showMessage('A🤍', `All I’m asking Santa for is that nothing comes to ruin our relationship. All our fights and conflicts may end with ease and there should never be a question of us being drifted apart ever in life. May I continue to fall for your smile and literally melt every time I see you in saree. May you always be my weakness and your smile a weapon that slices my heart. I need and want to be with you always. I want to be sure all my days will be lightened with the light of your smile (Like Always), by the heat of your soul and obviously our mood swings and childish behavior.`);
+              break;
+
+            default:
+              showMessage(letterElement.innerText, "Eta secret ekta message code porle dekhte parba. I love you Arpita." + letterElement.innerText);
+          }
+        });
+      });
+
+      var emojiElement = document.querySelector('.tree-emoji');
+      emojiElement.addEventListener("click", function() {
+        showMessage("🦸", "My Superhero, you know that how much you mean to me right? The same day, same moment last year things weren't the same I know but look now, you literally are one of the most important part of my life. Just like a superhero you have given me hope. You know how to cheer me up and take care of me perfectly. I know I haven't been even close to what u want from a partner but hopefully I will fulfil all your dreams someday. Till then just bear with me. And you know how much I love you na? 💜"
+);
+      });
+
+      var heartemoji = document.querySelector('.heart-emoji');
+heartemoji.addEventListener("click", function() {
+  showMessage("💜", "Will you mind if I call you mine and love you forever? 💜\n" +
+    "Can you give me a small space in your heart as a partner regardless of how I am and believe in me?\n" +
+    "If things drift apart and are not going as planned, will you please help this idiot to make it smooth and hang on?\n" +
+    "Because I need you, I want to be with you forever. I hadn't planned it, but somehow I have fallen for you badly, and I love you more than I can even imagine.\n" +
+    "\nI Love You, my Bacchata!");
+});
+      var starElement = document.getElementById("star");
+      starElement.addEventListener("click", function() {
+        showMessage("Star", "My Dearest Arpita, Merry Christmas!" );
+      });
+
+    
+      var snowfallContainer = document.getElementById("snowfall");
+
+
+      for (var i = 0; i < 100; i++) {
+        var snowflake = document.createElement("div");
+        snowflake.className = "snowflake";
+        snowfallContainer.appendChild(snowflake);
+
+        
+        snowflake.style.top = Math.random() * window.innerHeight + "px";
+        snowflake.style.left = Math.random() * window.innerWidth + "px";
+
+       
+        snowflake.animate([
+          { transform: 'translateY(0)' },
+          { transform: 'translateY(' + window.innerHeight + 'px)' }
+        ], {
+          duration: Math.random() * 5000 + 5000, 
+          iterations: Infinity
+        });
+      }
+    });
+  </script>
+</body>
+</html>
